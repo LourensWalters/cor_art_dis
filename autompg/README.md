@@ -1,7 +1,11 @@
 AutoMPG
 ==============================
 
-Prediction of fuel efficiency given 8 variables
+Prediction of fuel efficiency given 8 variables. 
+
+Thus far I have only completed the Exploratory Data Analysis as well as initial MPL model of the data. Please view the Jupyter notebook in the notebook directory for the initial results. It is available to view statically, or else you can download it and run it locally. 
+The rest of the project is still under construction. 
+Thank you for your interest. 
 
 Project Organization
 ------------
