@@ -82,16 +82,16 @@ However, the 0.83 accuracy result on the holdout samples indicates that the mode
 The precision (positive predicted value) is extremely high 0.93 and could certainly be used for intervention purposes given the right business requirement i.e. false discovery rate is only 0.07. On the other hand, the sensitivity is lower at 0.7, which likewise could mean that the model is not appropriate for certain applications.  
   
 The model is accurate enough to capture the directly proportionate relationship between several response variables as per the response curves shown above (in order of strength of association, based on response curve output):
-*Thal, ca, slope, oldpeak, exang, restecg, chol, trestbps, cp, sex, age
+* Thal, ca, slope, oldpeak, exang, restecg, chol, trestbps, cp, sex, age
 and the inversely proportional relationship between:
-*Thalach, fbs
+* Thalach, fbs
 
 Conclusion
 ===========
 The model as applied to the validation dataset managed to capture the underlying signals in the data. We can therefore conclude that the model generalises well and that its accuracy is sufficiently high for this model to be used based on the features captured. The first next step would be to define a business requirement. The analysis showed that features strongly correlated with Coronary Artery disease in this dataset are in fact close to being proxy measures for the actual outcome:
  
-*thal: Arteries found to be: 1. Normal 2. Reversible defect and 3. Fixed defect
-*ca: Number of major vessels (0-3) coloured by fluoroscopy
+* thal: Arteries found to be: 1. Normal 2. Reversible defect and 3. Fixed defect
+* ca: Number of major vessels (0-3) coloured by fluoroscopy
 
 are by nature close to the definition of Coronary Artery Disease itself. Care should therefore be taken when including these in a model where these measurements might not be available at the point of deployment of the model. 
 
