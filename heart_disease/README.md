@@ -95,6 +95,12 @@ The model as applied to the validation dataset managed to capture the underlying
 
 are by nature close to the definition of Coronary Artery Disease itself. Care should therefore be taken when including these in a model where these measurements might not be available at the point of deployment of the model. 
 
+References
+===========
+
+Detrano, R., Janosi, A., Steinbrunn, W., Pfisterer, M., Schmid, J. J., Sandhu, S., Guppy, K. H., Lee, S., & Froelicher, V. (1989). International application of a new probability algorithm for the diagnosis of coronary artery disease. The American Journal of Cardiology, 64(5), 304–310. https://doi.org/10.1016/0002-9149(89)90524-9
+Patel, S. B. (2020). Heart Disease Prediction using Machine Learning and Data Mining. International Journal of Recent Technology and Engineering, 9(1), 21–219. https://doi.org/10.35940/ijrte.f9199.059120
+
 
 --------
 
