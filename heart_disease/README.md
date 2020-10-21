@@ -3,7 +3,7 @@ Classification of Coronary Artery Disease
 
 The main objective of the analysis was to explore the Cleveland "Coronary Artery Disease" dataset (Detrano et al., 1989)(Patel, 2020) by applying various ML techniques to better understand the information contained in the dataset, and to document any findings. The dataset used can be found on the UCI Machine Learning Repository at the following location:
 
-Heart Disease Dataset
+[Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+Disease "Heart Disease Dataset")
 
 Approach
 ========
