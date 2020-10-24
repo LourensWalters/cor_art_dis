@@ -60,7 +60,7 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
 
     acc_score = round((tp + tn) / (tp + fp + tn + fn), 3)
 
-    print('\naccuracy:\t\t\t{}  \nprecision:\t\t\t{} \nrecall:\t\t\t\t{}'.format(acc_score, ppv, tpr))
+    print('\naccuracy:\t\t\t{}  \nprecision:\t\t\t{} \nsensitivity:\t\t\t\t{}'.format(acc_score, ppv, tpr))
     print('\nspecificity:\t\t\t{} \nnegative predictive value:\t{}'.format(tnr, npv))
     print('\nfalse positive rate:\t\t{}  \nfalse negative rate:\t\t{} \nfalse discovery rate:\t\t{}'.format(fpr, fnr,
                                                                                                             fdr))
@@ -197,6 +197,8 @@ def plotCategorical(attribute, labels, ax_index, df, axes):
         t.set_text(l)
 
 def plotContinuous(attribute, xlabel, ax_index, df, axes):
+    if (ax_index == 5):
+        return
     _ = sns.distplot(df[[attribute]], ax=axes[ax_index][0]);
     _ = axes[ax_index][0].set(xlabel=xlabel, ylabel='density');
     _ = sns.violinplot(x='ca_disease', y=attribute, data=df, ax=axes[ax_index][1]);
