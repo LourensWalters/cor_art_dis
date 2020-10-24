@@ -105,7 +105,34 @@ def plot_feature_importance_log(fit, features):
     reverse_importances = importances[sorted_ID][::-1]
 
     for i,v in enumerate(reverse_importances):
-        print('Feature: %10s\tScore:\t%.5f' % (reverse_features[i],v))
+        print('Feature: %20s\tScore:\t%.5f' % (reverse_features[i],v))
+
+    # Plot feature importance
+    sns.set(font_scale=1);
+    _ = plt.figure(figsize=[10,10]);
+    _ = plt.xticks(rotation='horizontal')
+    _ = plt.barh(feature_list[sorted_ID], importances[sorted_ID], align='center');
+    _ = plt.show();
+
+def plot_feature_importance_dec(fit, features):
+    """
+    Creates a plot for the specified feature importance object.
+    """
+
+    set_printoptions(precision=3)
+
+    # Summarize selected features
+    scores = fit
+    #scores /= scores.max()
+
+    importances = np.array(scores)
+    feature_list = features
+    sorted_ID=np.array(np.argsort(scores))
+    reverse_features = feature_list[sorted_ID][::-1]
+    reverse_importances = importances[sorted_ID][::-1]
+
+    for i,v in enumerate(reverse_importances):
+        print('Feature: %20s\tScore:\t%.5f' % (reverse_features[i],v))
 
     # Plot feature importance
     #sorted_ID=np.array(np.argsort(scores)[::-1])
@@ -117,7 +144,6 @@ def plot_feature_importance_log(fit, features):
 
     #_=plt.bar(X_indices - .45, scores, width=.2, label=r'Univariate score ($-Log(p_{value})$)')
     #plt.show()
-    # Summarize feature importance
 
 def plot_feature_importance(fit, features):
     """
@@ -128,7 +154,6 @@ def plot_feature_importance(fit, features):
 
     # Summarize selected features
     scores = -np.log10(fit.pvalues_)
-    #scores /= scores.max()
 
     importances = np.array(scores)
     feature_list = features
@@ -137,31 +162,62 @@ def plot_feature_importance(fit, features):
     reverse_importances = importances[sorted_ID][::-1]
 
     for i,v in enumerate(reverse_importances):
-        print('Feature: %10s\tScore:\t%.5f' % (reverse_features[i],v))
+        print('Feature: %20s\tScore:\t%.5f' % (reverse_features[i],v))
 
     # Plot feature importance
-    #sorted_ID=np.array(np.argsort(scores)[::-1])
     sns.set(font_scale=1);
     _ = plt.figure(figsize=[10,10]);
     _ = plt.xticks(rotation='horizontal')
     _ = plt.barh(feature_list[sorted_ID], importances[sorted_ID], align='center');
     _ = plt.show();
 
-    #_=plt.bar(X_indices - .45, scores, width=.2, label=r'Univariate score ($-Log(p_{value})$)')
-    #plt.show()
-    # Summarize feature importance
+def plotAge(df, axes):
+    facet_grid = sns.FacetGrid(df, hue='ca_disease')
+    facet_grid.map(sns.kdeplot, "age", shade=True, ax=axes[0])
+    legend_labels = ['disease false', 'disease true']
+    for t, l in zip(axes[0].get_legend().texts, legend_labels):
+        t.set_text(l)
+        axes[0].set(xlabel='age', ylabel='density')
 
-    def main():
-        from sklearn.metrics import confusion_matrix
-        """
-        main function - does all the work
-        """
-        # parse arguments
-        cnf_matrix = confusion_matrix([0, 0, 1, 1], [0, 0, 1, 1])
+    avg = df[["age", "ca_disease"]].groupby(['age'], as_index=False).mean()
+    sns.barplot(x='age', y='ca_disease', data=avg, ax=axes[1])
+    axes[1].set(xlabel='age', ylabel='disease probability')
 
-        # generate plots
-        plot_confusion_matrix(cnf_matrix, classes=[0,1], normalize=True)
+    plt.clf()
 
-    if __name__ == "__main__":
-        # call main
-        main()
+def plotCategorical(attribute, labels, ax_index, df, axes):
+    sns.countplot(x=attribute, data=df, ax=axes[ax_index][0])
+    sns.countplot(x='ca_disease', hue=attribute, data=df, ax=axes[ax_index][1])
+    avg = df[[attribute, 'ca_disease']].groupby([attribute], as_index=False).mean()
+    _ = sns.barplot(x=attribute, y='ca_disease', hue=attribute, data=avg, ax=axes[ax_index][2])
+
+    for t, l in zip(axes[ax_index][1].get_legend().texts, labels):
+        t.set_text(l)
+    for t, l in zip(axes[ax_index][2].get_legend().texts, labels):
+        t.set_text(l)
+
+def plotContinuous(attribute, xlabel, ax_index, df, axes):
+    _ = sns.distplot(df[[attribute]], ax=axes[ax_index][0]);
+    _ = axes[ax_index][0].set(xlabel=xlabel, ylabel='density');
+    _ = sns.violinplot(x='ca_disease', y=attribute, data=df, ax=axes[ax_index][1]);
+
+def plotGrid(isCategorical, categorical, continuous, df, axes):
+    if isCategorical:
+        [plotCategorical(x[0], x[1], i, df, axes) for i, x in enumerate(categorical)]
+    else:
+        [plotContinuous(x[0], x[1], i, df, axes) for i, x in enumerate(continuous)]
+
+def main():
+    from sklearn.metrics import confusion_matrix
+    """
+    main function - does all the work
+    """
+    # parse arguments
+    cnf_matrix = confusion_matrix([0, 0, 1, 1], [0, 0, 1, 1])
+
+    # generate plots
+    plot_confusion_matrix(cnf_matrix, classes=[0,1], normalize=True)
+
+if __name__ == "__main__":
+    # call main
+    main()
