@@ -201,7 +201,16 @@ def plotContinuous(attribute, xlabel, ax_index, df, axes):
         return
     _ = sns.distplot(df[[attribute]], ax=axes[ax_index][0]);
     _ = axes[ax_index][0].set(xlabel=xlabel, ylabel='density');
+    axes[ax_index][0].xaxis.label.set_size(24)
+    axes[ax_index][0].yaxis.label.set_size(24)
+    axes[ax_index][0].tick_params('y', labelsize = 20);
+    axes[ax_index][0].tick_params('x', labelsize = 20);
     _ = sns.violinplot(x='ca_disease', y=attribute, data=df, ax=axes[ax_index][1]);
+    axes[ax_index][1].xaxis.label.set_size(24)
+    axes[ax_index][1].yaxis.label.set_size(24)
+    axes[ax_index][1].tick_params('y', labelsize = 20);
+    axes[ax_index][1].tick_params('x', labelsize = 20);
+    plt.tight_layout()
 
 def plotGrid(isCategorical, categorical, continuous, df, axes):
     if isCategorical:
