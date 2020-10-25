@@ -60,7 +60,7 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
 
     acc_score = round((tp + tn) / (tp + fp + tn + fn), 3)
 
-    print('\naccuracy:\t\t\t{}  \nprecision:\t\t\t{} \nsensitivity:\t\t\t\t{}'.format(acc_score, ppv, tpr))
+    print('\naccuracy:\t\t\t{}  \nprecision:\t\t\t{} \nsensitivity:\t\t\t{}'.format(acc_score, ppv, tpr))
     print('\nspecificity:\t\t\t{} \nnegative predictive value:\t{}'.format(tnr, npv))
     print('\nfalse positive rate:\t\t{}  \nfalse negative rate:\t\t{} \nfalse discovery rate:\t\t{}'.format(fpr, fnr,
                                                                                                             fdr))
