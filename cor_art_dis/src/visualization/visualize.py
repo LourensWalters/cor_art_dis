@@ -19,20 +19,20 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
 
     plt.figure(figsize=(6, 6))
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    plt.title(title)
+    plt.title(title, fontsize=18)
     plt.colorbar()
     tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45)
-    plt.yticks(tick_marks, classes)
+    plt.xticks(tick_marks, classes, fontsize=15)
+    plt.yticks(tick_marks, classes, fontsize=15)
 
     fmt = '.2f' if normalize else 'd'
     thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, format(cm[i, j], fmt), horizontalalignment="center", color="white" if cm[i, j] > thresh else "black")
+        plt.text(j, i, format(cm[i, j], fmt), horizontalalignment="center", color="white" if cm[i, j] > thresh else "black", fontsize=18)
 
     plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
+    plt.ylabel('True label', fontsize=18)
+    plt.xlabel('Predicted label', fontsize=18)
 
     fp_label = 'false positive'
     fp = cm[0][1]
@@ -70,8 +70,8 @@ def plot_roc_curve(fpr, tpr, title="Receiver operating characteristic (ROC) Curv
     """
 
     # Visualization for ROC curve
-    sns.set_style("darkgrid", {"axes.facecolor": ".9"})
-    sns.set(font_scale=1);
+    #sns.set_style("darkgrid", {"axes.facecolor": ".9"})
+    #sns.set(font_scale=1);
     print('AUC: {}'.format(auc(fpr, tpr)))
     plt.figure(figsize=(10,8))
     lw = 2
@@ -81,10 +81,10 @@ def plot_roc_curve(fpr, tpr, title="Receiver operating characteristic (ROC) Curv
     plt.ylim([0.0, 1.05])
     plt.yticks([i/20.0 for i in range(21)])
     plt.xticks([i/20.0 for i in range(21)])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title(title)
-    plt.legend(loc="lower right")
+    plt.xlabel('False Positive Rate', fontsize=18)
+    plt.ylabel('True Positive Rate', fontsize=18)
+    plt.title(title, fontsize=18)
+    plt.legend(loc="lower right", fontsize=18)
     _ = plt.show();
 
 def plot_feature_importance_log(fit, features):
@@ -108,10 +108,12 @@ def plot_feature_importance_log(fit, features):
         print('Feature: %20s\tScore:\t%.5f' % (reverse_features[i],v))
 
     # Plot feature importance
-    sns.set(font_scale=1);
+    #sns.set(font_scale=1);
     _ = plt.figure(figsize=[10,10]);
-    _ = plt.xticks(rotation='horizontal')
+    _ = plt.xticks(rotation='horizontal', fontsize=20)
     _ = plt.barh(feature_list[sorted_ID], importances[sorted_ID], align='center');
+    _ = plt.yticks(fontsize=20)
+    #plt.tight_layout()
     _ = plt.show();
 
 def plot_feature_importance_dec(fit, features):
@@ -136,10 +138,11 @@ def plot_feature_importance_dec(fit, features):
 
     # Plot feature importance
     #sorted_ID=np.array(np.argsort(scores)[::-1])
-    sns.set(font_scale=1);
+    #sns.set(font_scale=1);
     _ = plt.figure(figsize=[10,10]);
-    _ = plt.xticks(rotation='horizontal')
+    _ = plt.xticks(rotation='horizontal', fontsize=20)
     _ = plt.barh(feature_list[sorted_ID], importances[sorted_ID], align='center');
+    _ = plt.yticks(fontsize=20)
     _ = plt.show();
 
     #_=plt.bar(X_indices - .45, scores, width=.2, label=r'Univariate score ($-Log(p_{value})$)')
@@ -165,10 +168,11 @@ def plot_feature_importance(fit, features):
         print('Feature: %20s\tScore:\t%.5f' % (reverse_features[i],v))
 
     # Plot feature importance
-    sns.set(font_scale=1);
+    #sns.set(font_scale=1);
     _ = plt.figure(figsize=[10,10]);
-    _ = plt.xticks(rotation='horizontal')
+    _ = plt.xticks(rotation='horizontal', fontsize=20)
     _ = plt.barh(feature_list[sorted_ID], importances[sorted_ID], align='center');
+    _ = plt.yticks(fontsize=20)
     _ = plt.show();
 
 def plotAge(df, axes):
