@@ -1,7 +1,39 @@
 heart_disease
 ==============================
 
-Classification of Heart Disease based on recorded data
+Coronory Artery Disease Project
+Exploratory analysis
+Prediction of heart disease given 14 variables
+For this analysis we use the Cleveland "Coronary Artery Disease" dataset found on the UCI Machine Learning Repository at the following location:
+
+Heart Disease Dataset
+
+The objective of the analysis is to use statistical learning to identify factors associated with Coronary Artery Disease as indicated by a coronary angiography interpreted by a Cardiologist.
+
+According to the paper by (Detrano et al., 1989) the data represents data collected for 303 patients referred for coronary angiography at the Cleveland Clinic between May 1981 and September 1984. The 13 independent/ features variables can be divided into 3 groups as follows:
+
+Routine evaluation (based on historical data):
+
+ECG at rest
+Serum Cholesterol
+Fasting blood sugar
+Non-invasive test data (informed consent obtained for data as part of research protocol):
+
+Exercise ECG
+ST-segment peak slope (upsloping, flat or downsloping)
+ST-segment depression
+Excercise Thallium scintigraphy (fixed, reversible or none)
+Cardiac fluoroscopy (number of vessels appeared to contain calcium)
+Other demographic and clinical variables (based on routine data):
+
+Age
+Sex
+Chest pain type
+Systolic blood pressure
+ST-T-wave abnormality (T-wave abnormality)
+Probably or definite ventricular hypertrophy (Este's criteria)
+The dependent/ response variable was the angiographic test result indicating a >50% diameter narrowing.
+
 
 Project Organization
 ------------
