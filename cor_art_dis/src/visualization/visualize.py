@@ -70,8 +70,6 @@ def plot_roc_curve(fpr, tpr, title="Receiver operating characteristic (ROC) Curv
     """
 
     # Visualization for ROC curve
-    #sns.set_style("darkgrid", {"axes.facecolor": ".9"})
-    #sns.set(font_scale=1);
     print('AUC: {}'.format(auc(fpr, tpr)))
     plt.figure(figsize=(10,8))
     lw = 2
@@ -216,7 +214,7 @@ def plotContinuous(attribute, xlabel, ax_index, df, axes):
     axes[ax_index][1].tick_params('x', labelsize = 20);
     plt.tight_layout()
 
-def plotGrid(isCategorical, categorical, continuous, df, axes):
+def plotVar(isCategorical, categorical, continuous, df, axes):
     if isCategorical:
         [plotCategorical(x[0], x[1], i, df, axes) for i, x in enumerate(categorical)]
     else:
