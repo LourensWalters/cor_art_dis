@@ -173,19 +173,32 @@ def plot_feature_importance(fit, features):
     _ = plt.yticks(fontsize=20)
     _ = plt.show();
 
-def plotAge(df, axes):
-    facet_grid = sns.FacetGrid(df, hue='ca_disease')
-    facet_grid.map(sns.kdeplot, "age", shade=True, ax=axes[0])
-    legend_labels = ['disease false', 'disease true']
-    for t, l in zip(axes[0].get_legend().texts, legend_labels):
-        t.set_text(l)
-        axes[0].set(xlabel='age', ylabel='density')
+def plotAge(df, axes, single_plot=True):
 
-    avg = df[["age", "ca_disease"]].groupby(['age'], as_index=False).mean()
-    sns.barplot(x='age', y='ca_disease', data=avg, ax=axes[1])
-    axes[1].set(xlabel='age', ylabel='disease probability')
+    if (single_plot):
+        sns.kdeplot (data=df.loc[(df['ca_disease'] == 0), 'age'], shade = True, label = 'Disease False')
+        sns.kdeplot (data=df.loc[(df['ca_disease'] == 1), 'age'], shade = True, label = 'Disease True')
+        plt.xlabel('Age', fontsize=20)
+        plt.ylabel('Density', fontsize=20)
+        plt.xticks(fontsize=20)
+        plt.yticks(fontsize=20)
+        plt.legend(fontsize=15)
+        plt.show()
 
-    plt.clf()
+    else:
+        facet_grid = sns.FacetGrid(df, hue='ca_disease')
+        _ = facet_grid.map(sns.kdeplot, "age", shade=True, ax=axes[0]);
+
+        legend_labels = ['disease false', 'disease true']
+        for t, l in zip(axes[0].get_legend().texts, legend_labels):
+            t.set_text(l)
+            axes[0].set(xlabel='age', ylabel='density')
+
+        avg = df[["age", "ca_disease"]].groupby(['age'], as_index=False).mean();
+        _ = sns.barplot(x='age', y='ca_disease', data=avg, ax=axes[1]);
+        _ = axes[1].set(xlabel='age', ylabel='disease probability');
+
+    #plt.clf()
 
 def plotCategorical(attribute, labels, ax_index, df, axes):
     sns.countplot(x=attribute, data=df, ax=axes[ax_index][0])
