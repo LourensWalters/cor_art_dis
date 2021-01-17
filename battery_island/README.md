@@ -85,23 +85,26 @@ following changes:
 * Interfaces for reading files from different input sources e.g. JSON files. 
 * Better visualisation of results, more Exploratory Data Analysis on the data. 
 
-Please don't be too harsh on me regarding criticism on the OO component of the code, I only recently started coding in Python again after a 16 year long move away from Python! Would love your comments though, and better even, just go ahead and change the code! I can always revert it back if I don't like what you are doing :) Which is very unlikely. 
+Please don't be too harsh on me regarding criticism on the OO component of the code, I only recently started coding 
+in Python again after a 16 year long move away from Python! Would love your comments though, and better even, just 
+go ahead and change the code! I can always revert it back if I don't like what you are doing :) Which is very unlikely. 
 
 The code can be run from the command line from the project root by using: 
 
-python -m src.data.make_data.py
+_python -m src.data.make_data.py_
 
 This command will do the following: 
 
 * Read data from matlab files, and convert to pickled Python dictionary.
-* Wrangle data by: cleaning data, converting time-series variables to same scale, imputing missing values, dropping outliers and creating new features. 
+* Wrangle data by: cleaning data, converting time-series variables to same scale, imputing missing values, dropping 
+  outliers and creating new features. 
 * Create tensorflow file format, and output file to tensorflow formatted files. 
 * Read data from tensorflow format, build CNN. 
 * Save CNN to file through callback function.
 
 This can be followed up with making predictions using the model by: 
 
-python -m src.data.predict_model.py
+_python -m src.data.predict_model.py_
 
 * Reads saved tensorflow CNN from file.
 * Read prediction data from dataset. 
@@ -109,7 +112,14 @@ python -m src.data.predict_model.py
 * Calculater accuracy of result.
 * Report results. 
 
-There are various Jupyter notebooks in the notebook directory, that visualise results and can be used to run all of the data transformation and model building manually. 
+There are various Jupyter notebooks in the notebook directory, that visualise results and can be used to run all of 
+the data transformation and model building manually. 
+
+Please let me know if you struggle to get the code work, I will try my best to assist you to get it up and running. 
+
+I did install CUDA on my system, and do have an NVIDIA card. You can run the code without this, and you can also 
+adapt it to run on GoogleCloud API, but I have not done so yet. Feel free to implement this though! Let me know if 
+you need help on this. 
 
 ## Background
 
@@ -122,6 +132,7 @@ article - but which are entirely fictional and only used for the purpose of stud
 As Data Scientists, we are stranded on the island of scientific inquiry. 
 
 ![](.README_images/3d796707.png)
+(Kleppmann, 2017)
 
 We need to make our way to the Kingdom of Analytics, without getting lost in the Mountains of Column Storage, 
 drowning in the Ocean of Distributed Data or being lured astray by the Star Schema Monument. 
@@ -158,14 +169,17 @@ What would the best architecture be for such a system? Some of the things you sh
   introducing them to? 
 
 ![](.README_images/5d50c2da.png)
-
+(Rattenbury et al., 2017)
 *  How would a data workflow fit into this new archicture? Who will do what in this workflow?
 
 ![](.README_images/43451118.png)
+(Rattenbury et al., 2017)
+* Should we treat raw data differently to derived data? If so, how?
 
+![](.README_images/b1b48bc5.png)
+(Rattenbury et al., 2017)
 * Do we need a data lake?
 * Do we need a data warehouse?
-* Should we treat raw data differently to derived data? If so, how?
 * Should we go with cloud or on-premise?
 * What tools should we use for each part of the architecture. 
 
@@ -178,8 +192,10 @@ has SQL databases attached that store data regarding tests - this is however not
 The data need to be accurately curated. The system needs to be able to do laboratory reporting. The system must 
 enable us to use the data in new ways previously not possible. The system must be flexible enough to adapt to new 
 data formats for future growth of the company. The company is thinking of expanding into Wind Energy and might need 
-to introduce data from these sources at some future points. Most importantly, the system must put a smile on the 
-scientists faces and give them a new reason for finding fullfilment in their jobs!
+to introduce data from these sources at some future points. The system can also not be expensive, the company is 
+going through a downturn and need to cut costs. The system will need to be built using the cheapest components 
+possible. Most importantly, the system must put a smile on the scientists faces and give them a new reason for 
+finding fulfillment in their jobs!
 
 There is no right and wrong, be as creative as you can! The main thing is to back up your answers with 
 justifications as best you can. 
@@ -187,6 +203,19 @@ justifications as best you can.
 Let us try to have a lively debate around this. We can schedule a call if you think this is an interesting problem. 
 
 If not, compile the code and play with the Tensorflow models!
+
+Above all else, have fun!
+
+## References
+
+* Attia, P. M., Grover, A., Jin, N., Severson, K. A., Markov, T. M., Liao, Y. H., Chen, M. H., Cheong, B., Perkins, N.
+, Yang, Z., Herring, P. K., Aykol, M., Harris, S. J., Braatz, R. D., Ermon, S., & Chueh, W. C. (2020). Closed-loop optimization of fast-charging protocols for batteries with machine learning. Nature, 578(7795), 397–402. https://doi.org/10.1038/s41586-020-1994-5
+* Kleppmann, M. (2017). Designing Data-Intensive Applications: The Big Ideas behind Reliable, Scalable, and 
+  Maintainable Systems. In O’Reilly Media, Inc. https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/%0Ahttp://shop.oreilly.com/product/0636920032175.do
+* Rattenbury, T., Hellerstein, J. M., Heer, J., Kandel, S., & Carreras, C. (2017). Principles of Data Wrangling.
+* Severson, K. A., Attia, P. M., Jin, N., Perkins, N., Jiang, B., Yang, Z., Chen, M. H., Aykol, M., Herring, P. K., 
+  Fraggedakis, D., Bazant, M. Z., Harris, S. J., Chueh, W. C., & Braatz, R. D. (2019). Data-driven prediction of battery cycle life before capacity degradation. Nature Energy, 4(5), 383–391. https://doi.org/10.1038/s41560-019-0356-8
+
 
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
