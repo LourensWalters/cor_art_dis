@@ -1,0 +1,192 @@
+Battery Island Data Lake Architecture Challenge
+===============================================
+
+This project is focused on designing a Data Lake architecture which will allow for advanced analysis and 
+routine reporting on battery testing data in a distributed scientific environment. The architecture should also 
+allow for the wrangling of data for dashboarding and predictive modelling purposes.
+
+The project is based on a hypothetical company but the concept derives from a recent paper (published in Nature) called 
+[Data-driven prediction of battery cycle life before capacity degradation](https://www.nature.com/articles/s41560-019-0356-8) by Kristen A. Severson et. al. 
+
+The following article on Medium: [Predicting Battery Lifetime with CNNs](https://towardsdatascience.com/predicting-battery-lifetime-with-cnns-c5e1faeecc8f) replicated the work done in the paper Severson et. al., but used CNNs instead of Elastic Nets. 
+
+We based this project on the code provided by the Medium article, which is available here: 
+
+* https://github.com/dsr-18/long-live-the-battery
+
+The code for the data extraction component of the Nature article (not included in the Medium article code) is available 
+here: 
+
+* https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation
+
+For this project we merged the code from the previous two repositories, and then refactored it to be more easily 
+navigable i.e. we created Object Oriented code from the modularised code. The code was also updated in that several changes have 
+been made to Tensorflow since the release of the Medium article. We updated the code to be compatible with the latest stable Tensorflow  
+release. The code was developed using the PyCharm IDE, using a virtual environment and should therefore work out of the box if used with the included 
+virtual environment provided in this repository (venv).
+
+The project code is organised as follows (based on CookieCutter data science template - see footnote): 
+
+
+Project Organisation
+--------------------
+
+    ├── LICENSE
+    ├── Makefile           <- Makefile with commands like `make data` or `make train`
+    ├── README.md          <- The top-level README for developers using this project.
+    ├── data
+    │   ├── external       <- Data from third party sources.
+    │   ├── interim        <- Intermediate data that has been transformed.
+    │   ├── processed      <- The final, canonical data sets for modeling.
+    │   └── raw            <- The original, immutable data dump.
+    │
+    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
+    │
+    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    │
+    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
+    │                         the creator's initials, and a short `-` delimited description, e.g.
+    │                         `1.0-jqp-initial-data-exploration`.
+    │
+    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+    │
+    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+    │   └── figures        <- Generated graphics and figures to be used in reporting
+    │
+    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+    │                         generated with `pip freeze > requirements.txt`
+    │
+    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
+    ├── src                <- Source code for use in this project.
+    │   ├── __init__.py    <- Makes src a Python module
+    │   │
+    │   ├── data           <- Scripts to download or generate data
+    │   │   └── make_dataset.py
+    │   │
+    │   ├── features       <- Scripts to turn raw data into features for modeling
+    │   │   └── build_features.py
+    │   │
+    │   ├── models         <- Scripts to train models and then use trained models to make
+    │   │   │                 predictions
+    │   │   ├── predict_model.py
+    │   │   └── train_model.py
+    │   │
+    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
+    │       └── visualize.py
+    │
+    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+
+--------
+
+Please feel free to checkout the code, run it and improve it as you see fit. In particular, I am interested in the 
+following changes: 
+
+* Better design pattern usage within OO e.g. factory and facade patterns for file loading. 
+* Interfaces for reading files from different input sources e.g. JSON files. 
+* Better visualisation of results, more Exploratory Data Analysis on the data. 
+
+Please don't be too harsh on me regarding criticism on the OO component of the code, I only recently started coding in Python again after a 16 year long move away from Python! Would love your comments though, and better even, just go ahead and change the code! I can always revert it back if I don't like what you are doing :) Which is very unlikely. 
+
+The code can be run from the command line from the project root by using: 
+
+python -m src.data.make_data.py
+
+This command will do the following: 
+
+* Read data from matlab files, and convert to pickled Python dictionary.
+* Wrangle data by: cleaning data, converting time-series variables to same scale, imputing missing values, dropping outliers and creating new features. 
+* Create tensorflow file format, and output file to tensorflow formatted files. 
+* Read data from tensorflow format, build CNN. 
+* Save CNN to file through callback function.
+
+This can be followed up with making predictions using the model by: 
+
+python -m src.data.predict_model.py
+
+* Reads saved tensorflow CNN from file.
+* Read prediction data from dataset. 
+* Apply model to prediction set. 
+* Calculater accuracy of result.
+* Report results. 
+
+There are various Jupyter notebooks in the notebook directory, that visualise results and can be used to run all of the data transformation and model building manually. 
+
+## Background
+
+The objective of this project is however to consider the best data architecture, for a more generic problem i.e. how 
+to deploy such a system in a hypothetical environment, with features similar to those described in the Nature 
+article - but which are entirely fictional and only used for the purpose of studying Systems Architecture.
+
+## The Problem
+
+As Data Scientists, we are stranded on the island of scientific inquiry. 
+
+![](.README_images/3d796707.png)
+
+We need to make our way to the Kingdom of Analytics, without getting lost in the Mountains of Column Storage, 
+drowning in the Ocean of Distributed Data or being lured astray by the Star Schema Monument. 
+
+We need to come up with a strategy to ensure the Islands of Scientific Inquiry are firmly connected to the Kingdom 
+of Analytics. 
+
+## Our Fictional Organisation
+
+We are a new team of Data Scientists working for a large multi-national car company with a strategy to make the best 
+electric vehicles. The company has many research laboratories doing research on battery technologies to invent the 
+best battery that would optimise their business returns. They have the best scientists performing many tests on 
+complex laboratory systems that measure many different aspects of battery performance. The equipment output files in 
+CSV format, and the scientists only know how to use Excel. They perform incredibly complex calculations in Excel 
+spreadsheets of Gigabytes in size. The spreadsheets are stored on local lab machines. Until now these highly qualified 
+scientists have lived a happy live knowing not many can understand their work and no-one will probably ever decipher their
+convoluted Excel spreadsheets. They had perfect job security and career fullfilment!
+
+Recently a team from Stanford published a paper on predictive models that can predict the lifetime of a battery by 
+only testing the first 50 discharge cycles. Usually all batteries have to be tested for 1500 cycles, this is truly 
+a revolutionary improvement and management want to start implementing this on the company's data. They also don't 
+want to invest in a system do aggregate data for single purpose, so want the proposed system to also replicate all 
+the logic in the scientist's Excel spreadsheets! The scientists are obviously not very pleased, they like Excel!
+
+As the new data science team, you are tasked with coming up with a data management architecture to accomplish this goal!
+
+How exciting!
+
+## The Challenge
+
+What would the best architecture be for such a system? Some of the things you should consider are: 
+
+* The data value funnel and which tools our battery scientists should use to extract value in this new world we will be 
+  introducing them to? 
+
+![](.README_images/5d50c2da.png)
+
+*  How would a data workflow fit into this new archicture? Who will do what in this workflow?
+
+![](.README_images/43451118.png)
+
+* Do we need a data lake?
+* Do we need a data warehouse?
+* Should we treat raw data differently to derived data? If so, how?
+* Should we go with cloud or on-premise?
+* What tools should we use for each part of the architecture. 
+
+## The Assignment
+
+We should go forth and design a tangible system that ingests the battery data from various laboratories in different 
+countries. The data are source files in CSV as well as Excel Spreadsheets. Some of the battery testing equipment also 
+has SQL databases attached that store data regarding tests - this is however not the norm. 
+
+The data need to be accurately curated. The system needs to be able to do laboratory reporting. The system must 
+enable us to use the data in new ways previously not possible. The system must be flexible enough to adapt to new 
+data formats for future growth of the company. The company is thinking of expanding into Wind Energy and might need 
+to introduce data from these sources at some future points. Most importantly, the system must put a smile on the 
+scientists faces and give them a new reason for finding fullfilment in their jobs!
+
+There is no right and wrong, be as creative as you can! The main thing is to back up your answers with 
+justifications as best you can. 
+
+Let us try to have a lively debate around this. We can schedule a call if you think this is an interesting problem. 
+
+If not, compile the code and play with the Tensorflow models!
+
+
+<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
