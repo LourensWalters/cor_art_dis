@@ -32,7 +32,7 @@ def main(input_filepath, output_filepath):
     data_wrangler = DataWrangler("long_live")
     feature_engineer = FeatureEngineer("long_live")
 
-    # Load data from either SQL or pickle batch files depending on model i.e. long_live or coin_cell (see constructor
+    # Load data from either SQL or pickle batch files depending on model i.e. battery_island (see constructor
     # arguments)
     data_loader.read_data_from_source()  # For long live these are 3 pkl batch files in external dir.
                                          # Output is stored in processed.pkl in interim dir.

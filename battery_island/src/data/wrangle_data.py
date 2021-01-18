@@ -583,7 +583,6 @@ def main():
     """
     Class tester.
     """
-    # data_loader = DataLoader("coin_cell")
     data_loader = DataLoader("long_live")
     data_wrangler = DataWrangler()
 
