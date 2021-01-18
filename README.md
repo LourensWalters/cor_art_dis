@@ -15,7 +15,6 @@ All projects have README's so you can read about each individual project by navi
 
 Please feel free to contribute or change each of these projects as you please. We can then also discuss possible improvements. 
 
-I will upload a third more comprehensive project which will focus on a Data Lake architecture for a hypothetical company, based on an academic paper published in Nature. This project will also have a Tensorflow component to it for fun, but the focus will be on the Data Lake architecture. 
+I have uploaded a third more comprehensive project **battery_island** which focuses on a Data Lake architecture for a hypothetical company, based on an academic paper published in Nature. This project has a Tensorflow component to it for fun, but the focus will be on the Data Lake architecture. 
 
-
-
+Feel free to jump in and enjoy!
