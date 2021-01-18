@@ -89,6 +89,13 @@ Please don't be too harsh on me regarding criticism on the OO component of the c
 in Python again after a 16 year long move away from Python! Would love your comments though, and better even, just 
 go ahead and change the code! I can always revert it back if I don't like what you are doing :) Which is very unlikely. 
 
+**TO Note: Before running the code you will need do download the data. **
+* You can download the data here: 
+  [Data](https://drive.google.com/drive/folders/1JPBqZARmIS2ZnMdHuGr49qHGFN5OAAzB?usp=sharing) 
+* It might take a while as the file is 6GB in size. 
+* Unzip the data into the "data" directory above (unzipped 9GB).
+* You should now be ready to run the code. 
+
 The code can be run from the command line from the project root by using: 
 
 _python -m src.data.make_data.py_
