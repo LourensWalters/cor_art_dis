@@ -39,7 +39,7 @@ class DataWrangler:
         self._stage = stage
 
     def clean_data(self, all_batches_dict):
-        # Hardcoded to return first element of typle. TODO: Have to generalise this code in case you need second
+        # Hardcoded to return first element of tuple. TODO: Have to generalise this code in case you need second
         #  element.
         return self._process_data(all_batches_dict)[0]
 

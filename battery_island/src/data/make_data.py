@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# TODO: The encoding statement required else errors are generated. Find a more elegant way to overcome errors.
+
 import click
 import logging
 from pathlib import Path
@@ -9,6 +11,10 @@ from src.data.load_data import DataLoader
 from src.data.wrangle_data import DataWrangler
 from src.models.train_model import ModelTrainer
 from src.data.data_class import BatteryData
+
+# Turn GPU support for Tensorflow off. To turn it on, comment these lines out.
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
 @click.command()

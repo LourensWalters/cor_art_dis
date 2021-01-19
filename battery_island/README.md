@@ -89,16 +89,32 @@ Please don't be too harsh on me regarding criticism on the OO component of the c
 in Python again after a 16 year long move away from Python! Would love your comments though, and better even, just 
 go ahead and change the code! I can always revert it back if I don't like what you are doing :) Which is very unlikely. 
 
-**TO Note: Before running the code you will need do download the data. **
+**To Note: Before running the code you will need do download the data.**
+
 * You can download the data here: 
   [Data](https://drive.google.com/drive/folders/1JPBqZARmIS2ZnMdHuGr49qHGFN5OAAzB?usp=sharing) 
 * It might take a while as the file is 6GB in size. 
 * Unzip the data into the "data" directory above (unzipped 9GB).
 * You should now be ready to run the code. 
 
+Also, you can use the _virtualenv_ in venv to run the code (it is up to date): 
+
+_. .\venv\Scripts\activate_
+
+Else you can use the _requirements.txt_ file to set up an environment of your own. 
+
+Lastly, use the _src.data.make_data.py_ module to enable or disable GPU support for Tensorflow. The code to enable 
+or disable comes just after the module imports, it sets an environment variable to do the job - this works from
+Tensorflow 2 onwards. Not using GPU support will only affect training in this project. Data Wrangling is obviously 
+not affected, which takes up most of the time. An interesting side project would be to measure the speedup between 
+GPU and non-GPU! 
+
 The code can be run from the command line from the project root by using: 
 
-_python -m src.data.make_data.py_
+_python -m src.data.make_data <input_filepath> <output_filepath>_
+
+You can provide the code base directory as input and output paths for the moment, these variables are not currently 
+used. 
 
 This command will do the following: 
 
@@ -111,7 +127,7 @@ This command will do the following:
 
 This can be followed up with making predictions using the model by: 
 
-_python -m src.data.predict_model.py_
+_python -m src.data.predict_model_
 
 * Reads saved tensorflow CNN from file.
 * Read prediction data from dataset. 

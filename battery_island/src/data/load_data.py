@@ -1,10 +1,7 @@
-import pymysql
-import awswrangler as wr
 import pickle
 import numpy as np
 import pandas as pd
 from src.data.data_class import BatteryData
-from os.path import join
 import src.constants as cst
 
 EXTERNAL_DATA_DIR = cst.EXTERNAL_DATA_DIR
