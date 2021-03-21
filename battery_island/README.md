@@ -85,10 +85,6 @@ following changes:
 * Interfaces for reading files from different input sources e.g. JSON files. 
 * Better visualisation of results, more Exploratory Data Analysis on the data. 
 
-Please don't be too harsh on me regarding criticism on the OO component of the code, I only recently started coding 
-in Python again after a 16 year long move away from Python! Would love your comments though, and better even, just 
-go ahead and change the code! I can always revert it back if I don't like what you are doing :) Which is very unlikely. 
-
 **To Note: Before running the code you will need do download the data.**
 
 * You can download the data here: 
