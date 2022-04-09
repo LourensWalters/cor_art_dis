@@ -22,6 +22,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+*.exe
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -58,10 +59,14 @@ target/
 
 # DotEnv configuration
 .env
+venv
+venv39
 
 # Database
 *.db
 *.rdb
+data.zip
+data
 
 # Pycharm
 .idea
@@ -77,6 +82,7 @@ target/
 
 # exclude data from source control by default
 /data/
+Graph
 
 # Mac OS-specific storage files
 .DS_Store
