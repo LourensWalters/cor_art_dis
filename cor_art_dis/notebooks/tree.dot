@@ -1,6 +1,6 @@
 digraph Tree {
-node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
-edge [fontname=helvetica] ;
+node [shape=box, style="filled, rounded", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
 0 [label="max_heart_rate <= 150.5\ngini = 0.5\nsamples = 100.0%\nvalue = [0.54, 0.46]\nclass = No CAD", fillcolor="#fbece0"] ;
 1 [label="cholesterol <= 210.0\n0.41\n47.3%\n[0.29, 0.71]\nCAD", fillcolor="#8ac5f0"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
