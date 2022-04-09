@@ -15,23 +15,25 @@ REMAINING_CYCLES_NAME = 'Remaining_cycles'
 CURRENT_CYCLE_NAME = 'Current_cycle'
 
 # File paths
-TRAIN_TEST_SPLIT = './data/interim/train_test_split.pkl'  # file location for train/test split definition
-PROCESSED_DATA = './data/interim/processed_data.pkl'  # file location for processed data
-PROCESSED_DATA2 = './data/interim/processed_data.pkl'  # file location for processed data
-DATASETS_DIR = './data/processed/tfrecords'  # base directory to write tfrecord files in
-DATASETS_DIR2 = './data/processed/tfrecords/'  # base directory to write tfrecord files in
-EXTERNAL_DATA_DIR = './data/external'
+TRAIN_TEST_SPLIT = '../../data/interim/train_test_split.pkl'  # file
+# location for train/test split
+# definition
+PROCESSED_DATA = '../../data/interim/processed_data.pkl'  # file location for processed data
+PROCESSED_DATA2 = '../../data/interim/processed_data.pkl'  # file location for processed data
+DATASETS_DIR = '../../data/processed/tfrecords'  # base directory to write tfrecord files in
+DATASETS_DIR2 = '../../data/processed/tfrecords/'  # base directory to write tfrecord files in
+EXTERNAL_DATA_DIR = '../../data/external'
 TENSORBOARD_DIR = 'Graph'  # base directory to write tensorboard logs in
 SAVED_MODELS_DIR_LOCAL = 'saved_models'  # base directory to save trained model in
 BASE_DIR = './'  # home directory
-TRAIN_SET = './data/processed/tfrecords/train/*tfrecord'  # regexp files for the training set
-TEST_SET = './data/processed/tfrecords/test/*tfrecord'  # regexp for the test set
-SECONDARY_TEST_SET = './data/processed/tfrecords/secondary_test/*tfrecord'  # regexp for the secondary test set
-BIG_TRAIN_SET = './data/processed/tfrecords/train_big/*tfrecord' # regexp for the combined training set (train + 1st
+TRAIN_SET = '../../data/processed/tfrecords/train/*tfrecord'  # regexp files for the training set
+TEST_SET = '../../data/processed/tfrecords/test/*tfrecord'  # regexp for the test set
+SECONDARY_TEST_SET = '../../data/processed/tfrecords/secondary_test/*tfrecord'  # regexp for the secondary test set
+BIG_TRAIN_SET = '../../data/processed/tfrecords/train_big/*tfrecord' # regexp for the combined training set (train + 1st
                                                                     # test sets)
-SCALING_FACTORS_DIR = './data/processed/tfrecords/scaling_factors.csv'  # location for scaling factors for tfrecords
+SCALING_FACTORS_DIR = '../../data/processed/tfrecords/scaling_factors.csv'  # location for scaling factors for tfrecords
 # files
-DATA_DIR = './data'
+DATA_DIR = '../../data'
 
 BUCKET_NAME = 'ion_age_bucket'
 

@@ -1,29 +1,21 @@
-Battery Island Data Lake Architecture Challenge
-===============================================
+Battery Cycle Life Prediction
+=============================
 
-This project is focused on designing a Data Lake architecture which will allow for advanced analysis and 
-routine reporting on battery testing data in a distributed scientific environment. The architecture should also 
-allow for the wrangling of data for dashboarding and predictive modelling purposes.
-
-The project is based on a hypothetical company but the concept derives from a recent paper (published in Nature) called 
-[Data-driven prediction of battery cycle life before capacity degradation](https://www.nature.com/articles/s41560-019-0356-8) by Kristen A. Severson et. al. 
+This project is focused on the prediction of battery cycle life. The concept derives from a recent paper (published 
+in Nature) called [Data-driven prediction of battery cycle life before capacity degradation](https://www.nature.com/articles/s41560-019-0356-8) by Kristen A. Severson et. al. 
 
 The following article on Medium: [Predicting Battery Lifetime with CNNs](https://towardsdatascience.com/predicting-battery-lifetime-with-cnns-c5e1faeecc8f) replicated the work done in the paper Severson et. al., but used CNNs instead of Elastic Nets. 
-
-We based this project on the code provided by the Medium article, which is available here: 
-
-* https://github.com/dsr-18/long-live-the-battery
 
 The code for the data extraction component of the Nature article (not included in the Medium article code) is available 
 here: 
 
 * https://github.com/rdbraatz/data-driven-prediction-of-battery-cycle-life-before-capacity-degradation
 
-For this project we merged the code from the previous two repositories, and then refactored it to be more easily 
-navigable i.e. we created Object Oriented code from the modularised code. The code was also updated in that several changes have 
-been made to Tensorflow since the release of the Medium article. We updated the code to be compatible with the latest stable Tensorflow  
-release. The code was developed using the PyCharm IDE, using a virtual environment and should therefore work out of the box if used with the included 
-virtual environment provided in this repository (venv).
+For this project we used the code from the previous repository but refactored it to be more easily navigable i.e. we 
+created Object Oriented code from the modularised code. The code was also updated in that several changes have been 
+made to Tensorflow since the code was written. We updated the code to be compatible with the latest 
+stable Tensorflow  release. The code was developed using the PyCharm IDE, using a virtual environment and should 
+therefore work if used with the included requirements.txt file (contains most recent versions of all libraries).
 
 The project code is organised as follows (based on CookieCutter data science template - see footnote): 
 
@@ -78,14 +70,9 @@ Project Organisation
 
 --------
 
-Please feel free to checkout the code, run it and improve it as you see fit. In particular, I am interested in the 
-following changes: 
+Please feel free to check out the code, run it and improve it as you see fit. 
 
-* Better design pattern usage within OO e.g. factory and facade patterns for file loading. 
-* Interfaces for reading files from different input sources e.g. JSON files. 
-* Better visualisation of results, more Exploratory Data Analysis on the data. 
-
-**To Note: Before running the code you will need do download the data.**
+**To Note: Before running the code you will need to download the data.**
 
 * You can download the data here: 
   [Data](https://drive.google.com/drive/folders/1JPBqZARmIS2ZnMdHuGr49qHGFN5OAAzB?usp=sharing) 
